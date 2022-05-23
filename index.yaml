@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  rhpam-cop:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2022-05-23T17:54:42.405548+02:00"
+    description: A Helm chart to deploy authoring or production environment on Openshift
+    digest: 72af798b0c2e304f0b3812dbb9f929c4db2d787f89d3782495ee76ad495ca6d7
+    name: rhpam-cop
+    type: application
+    urls:
+    - rhpam-cop-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-05-23T17:54:42.392342+02:00"
