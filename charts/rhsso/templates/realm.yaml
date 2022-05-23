@@ -1,0 +1,83 @@
+{{- $cluster := lookup "config.openshift.io/v1" "Ingress" ".Values.global.rhsso.namespace" "cluster" }}
+{{- $domain := "UNKNOWN" }}
+{{- if hasKey $cluster "spec" }}
+  {{- if hasKey $cluster.spec "domain" }}
+    {{- $domain = $cluster.spec.domain}}
+  {{- end }}
+{{- end }}
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakRealm
+metadata:
+  name: {{ .Values.global.rhsso.realm | replace "_" "-" }}
+  namespace: {{ .Values.global.rhsso.namespace }}
+  labels:
+    app: sso
+    realm: {{ .Values.global.rhsso.realm }}
+    {{- include "commonLabels" . | indent 4 }}
+spec:
+  instanceSelector:
+    matchLabels:
+      app: sso
+  realm:
+    id: {{ .Values.global.rhsso.realm }}
+    realm: {{ .Values.global.rhsso.realm }}
+    enabled: true
+    displayName: RHPAM authoring realm
+    clients:
+{{- range $id, $client := .Values.global.rhsso.clients }}
+{{- $route := "" }}
+  {{- if eq $id "business-central" }}
+    {{- $route =  printf "https://rhpam-%s-rhpamcentr-%s.%s" $.Values.global.rhpam.environment $.Values.global.rhpam.namespace $domain }}
+  {{- else }}
+    {{- $route =  printf  "https://rhpam-server-%s.%s" $.Values.global.rhpam.namespace $domain }}
+  {{- end }}
+      - clientId: {{ $id }}
+        redirectUris:
+          - {{ $route }}/*
+        secret: {{ .secret | quote }}
+        clientAuthenticatorType: client-secret
+        rootUrl: {{ $route }}
+        adminUrl: {{ $route }}
+        enabled: true
+        name: {{ $id }}
+        standardFlowEnabled: true
+        directAccessGrantsEnabled: true
+        defaultClientScopes:
+          - email
+          - profile
+          - roles
+          - web-origins
+        optionalClientScopes:
+          - address
+          - microprofile-jwt
+          - offline_access
+          - phone
+{{- end }}
+    users:
+      - id: admin
+        username: admin
+        clientRoles:
+          realm-management:
+            - realm-admin
+        realmRoles:
+          - admin
+          - kie-server
+          - rest-all
+        enabled: True
+        credentials:
+          - type: "password"
+            value: {{ .Values.rhpam.admin.password | quote }}
+      - id: {{ .Values.rhpam.admin.username }}
+        username: {{ .Values.rhpam.admin.username }}
+        clientRoles:
+          realm-management:
+            - realm-admin
+        realmRoles:
+          - admin
+          - kie-server
+          - rest-all
+        enabled: True
+        credentials:
+          - type: "password"
+            value: {{ .Values.rhpam.admin.password | quote }}
+
