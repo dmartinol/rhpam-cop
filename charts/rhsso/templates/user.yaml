@@ -1,4 +1,3 @@
-{{- if false }}
 apiVersion: keycloak.org/v1alpha1
 kind: KeycloakUser
 metadata:
@@ -54,4 +53,3 @@ spec:
   realmSelector:
     matchLabels:
       realm: {{ .Values.global.rhsso.realm }}
-{{ end }}

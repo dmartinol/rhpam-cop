@@ -1,4 +1,3 @@
-{{- if false }}
 {{- $cluster := lookup "config.openshift.io/v1" "Ingress" ".Values.global.rhsso.namespace" "cluster" }}
 {{- $domain := "UNKNOWN" }}
 {{- if hasKey $cluster "spec" }}
@@ -20,7 +19,7 @@ metadata:
   namespace: {{ $.Values.global.rhsso.namespace }}
   labels:
     app: sso
-    {{- include "commonLabels" . | indent 4 }}
+    {{- include "commonLabels" $ | indent 4 }}
 spec:
   client:
     redirectUris:
@@ -48,5 +47,4 @@ spec:
     matchLabels:
       realm: {{ $.Values.global.rhsso.realm }}
 ---
-{{- end }}
 {{- end}}

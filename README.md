@@ -10,7 +10,7 @@ the deployment in the OpenShift environment, exposing the following features:
 * External data storage
 * SSO authentication with `RHSSO`
 * External Maven repository
-* Githook integration (with SSH authentication)
+* Git hooks integration (with SSH authentication)
 
 ## TL;DR
 **TODO**: push package or install from git repo?
@@ -350,4 +350,3 @@ TBD
 ## What's next
 * Configure optional settings (Githooks, Maven, SSH, SSO ...)
 * Have a separate configuration of the RHSSO realm users
-* Restore KeycloakUser and KeycloakClient
