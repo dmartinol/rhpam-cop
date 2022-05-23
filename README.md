@@ -15,7 +15,7 @@ the deployment in the OpenShift environment, exposing the following features:
 ## TL;DR
 **TODO**: push package or install from git repo?
 ```shell
-helm repo add redhat-cop https://github.com/dmartinol/rhpam-cop
+helm repo add redhat-cop https://dmartinol.github.io/rhpam-cop/
 helm install -n my-namespace -f my-rhpam.yaml my-rhpam redhat-cop/rhpam-cop
 ```
 
@@ -68,7 +68,7 @@ References:
 To install the chart in the `my-namespace` namespace with the release name `my-rhpam` and using custom configuration in `my-rhpam.yaml`:
 **TODO chart repo**
 ```shell
-helm repo add redhat-cop https://github.com/dmartinol/rhpam-cop
+helm repo add redhat-cop https://dmartinol.github.io/rhpam-cop/
 helm install -n my-namespace -f my-rhpam.yaml my-rhpam redhat-cop/rhpam-cop
 ```
 
