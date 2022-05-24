@@ -25,10 +25,11 @@ This chart provides an Helm-based deployment of RHPAM according to the following
   * `authoring` is made by one `Business Central` and one or more `Kie Server` instances
     * No containers are pre-loaded in the servers
   * `production` is made by one or more immutable `Kie Server` instances
-    * Configurable deployments can pre pre-loaded in the server
-  * In both cases, external dependencies (e.g., custom endpoints) can pre pre-loaded in a custom image, pulled from the 
+    * Configurable deployments can be pre-loaded in the server
+  * In both cases, external dependencies (e.g., custom endpoints) can be pre-loaded in a custom image, pulled from the 
     configured `Maven repo`
-* Custom properties can be added to the default `<system-properties>` to support the deployed applications
+* Custom properties can be defined that will be added to the runtime properties of the Kie Server
+  * Properties are added under the `<system-properties>` tag of the `standalone-openshift.xml` configuration
 
 The chart is designed with two different subcharts, namely [rhpam](./charts/rhpam) and [rhsso](./charts/rhsso): you can 
 find more design details in the related document [DESIGN.md](./DESIGN.md).
@@ -166,7 +167,7 @@ This chart builds an RHSSO instance with:
     username: USERNAME
     xa: false
 ```
-#### RHPAM chart
+#### RHPAM sub-chart
 RHPAM parameters are defined in [rhpam values.yaml](./charts/rhpam/values.yaml).
 
 This chart builds a custom Kie server image using a Dockerfile strategy, downloading all the required dependencies defined in
@@ -290,7 +291,7 @@ The `rhpam-git-hooks` ConfigMap, instead, contains the [post-commit](./charts/rh
 is automatically installed to guarantee that each change in the local repository will also be committed on the remote one
 (if it was defined).
 
-Given the above settings, the `KieApp` instance defined in [kieapp-yml](./charts/rhpam/templates/kieapp.yml) takes core of:
+Given the above settings, the `KieApp` instance defined in [kieapp-yml](./charts/rhpam/templates/kieapp.yml) takes care of:
 * Configuring `Business Central` to automatically install the given Git hook in each new project
 * Install the SSH keys in the `Business Central` to push to the changes in the remote Git repository using the SSH protocol 
 (no authentication required)
@@ -318,15 +319,19 @@ tag in the `pom.xml` file like the following:
 
 ## Troubleshooting
 ### Missing RHSSO admin password
-When we install more times the RHSSO instance using the same DB, the default admin password available from the 
-`credential-rhsso` Secret is not reflecting the real value pf the admin user password.
+When we install the RHSSO instance several times using the same DB, the default `admin` password available from the 
+`credential-rhsso` Secret does not reflect the real value, because in that case the DB update would fail.
 
-Open the terminal console for the `keycloak-0` Pod and run the following to create a temporary user to login and then reset 
-the password of the `admin`user:
+Follow these instructions to create a new admin user that allows you to login and reset the password of the `admin`
+user in the `master` Realm: 
+* Open the terminal console for the `keycloak-0` Pod
+* Run these commands:
 ```shell
 /opt/eap/bin/add-user-keycloak.sh -u test -p test123
 /opt/eap/bin/jboss-cli.sh --connect --command=reload
 ```
+
+After resetting the `admin` password, you can delete the` test` user from the RHSSO console.
 
 ## License
 See the associated [LICENSE](./LICENSE) file
