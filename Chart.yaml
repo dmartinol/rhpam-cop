@@ -3,6 +3,6 @@ name: rhpam-cop
 description: A Helm chart to deploy authoring or production environment on Openshift
 
 type: application
-version: 0.1.4
+version: 0.1.5
 # This is NOT used as the version of the deployed RHPAM images
-appVersion: 0.1.4
+appVersion: 0.1.5

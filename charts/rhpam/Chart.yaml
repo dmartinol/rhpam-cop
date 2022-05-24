@@ -3,6 +3,6 @@ name: rhpam
 description: A Helm chart to install RHPAM on Openshift using the RHPAM operator
 
 type: application
-version: 0.1.4
+version: 0.1.5
 # This is NOT used as the tag for RHPAM images, matches common.version property
 appVersion: 7.9.1
