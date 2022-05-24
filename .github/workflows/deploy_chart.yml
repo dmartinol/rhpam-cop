@@ -56,6 +56,8 @@ jobs:
       - name: Push new chart file
         run: |
           git add ./Chart.yaml
+          git add ./charts/rhpam/Chart.yaml
+          git add ./charts/rhsso/Chart.yaml
           git commit -m "build: bumped ${{ steps.chart_name.outputs.name }} to ${{ github.event.inputs.new_semver }} [skip ci]"
           git push
       - name: Push new tag
