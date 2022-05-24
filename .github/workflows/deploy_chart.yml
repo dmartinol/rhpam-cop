@@ -55,10 +55,10 @@ jobs:
           git add ./Chart.yaml
           git commit -m "build: bumped ${{ steps.chart_name.outputs.name }} to ${{ github.event.inputs.new_semver }} [skip ci]"
           git push
-      - name:
+      - name: Push new tag
         if: ${{ github.event.inputs.add_tag }}
         run: |
-          git tag "v${{ github.event.inputs.add_tag }}"
+          git tag "v${{ github.event.inputs.new_semver }}"
           git push origin --tags
 
       - name: GH-Pages checkout
