@@ -1,7 +1,3 @@
-# TBD
-* Should we package the release somewhere, like https://redhat-cop.github.io?
-* Review NOTES.txt to show the status of the chart
-
 # RHPAM packaged with Helm chart 
 This repository holds a configurable Helm chart of [RHPAM](https://developers.redhat.com/products/rhpam/overview), to simplify
 the deployment in the OpenShift environment, exposing the following features:
@@ -13,7 +9,6 @@ the deployment in the OpenShift environment, exposing the following features:
 * Git hooks integration (with SSH authentication)
 
 ## TL;DR
-**TODO**: push package or install from git repo?
 ```shell
 helm repo add redhat-cop https://dmartinol.github.io/rhpam-cop/
 helm install -n my-namespace -f my-rhpam.yaml my-rhpam redhat-cop/rhpam-cop
@@ -346,7 +341,3 @@ initial `master` branch
 
 ### Working with retricted network cluster
 TBD
-
-## What's next
-* Configure optional settings (Githooks, Maven, SSH, SSO ...)
-* Have a separate configuration of the RHSSO realm users
