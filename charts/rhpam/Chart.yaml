@@ -4,5 +4,5 @@ description: A Helm chart to install RHPAM on Openshift using the RHPAM operator
 
 type: application
 version: 0.1.0
-# This is NOT used as the tag for RHPAM images
-appVersion: "7.9.1"
+# This is NOT used as the tag for RHPAM images, matches common.version property
+appVersion: 7.9.1

@@ -5,4 +5,4 @@ description: A Helm chart to deploy authoring or production environment on Opens
 type: application
 version: 0.1.1
 # This is NOT used as the version of the deployed RHPAM images
-appVersion: "0.1.0"
+appVersion: 0.1.1

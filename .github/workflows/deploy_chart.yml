@@ -33,6 +33,9 @@ jobs:
       - name: Update chart version
         run: |
           sed -i 's/version: .*/version: ${{ github.event.inputs.new_semver }}/g' ./Chart.yaml
+          sed -i 's/appVersion: .*/appVersion: ${{ github.event.inputs.new_semver }}/g' ./Chart.yaml
+          sed -i 's/version: .*/version: ${{ github.event.inputs.new_semver }}/g' ./charts/rhpam/Chart.yaml
+          sed -i 's/version: .*/version: ${{ github.event.inputs.new_semver }}/g' ./charts/rhsso/Chart.yaml
 
       - name: Configure Git
         run: |
