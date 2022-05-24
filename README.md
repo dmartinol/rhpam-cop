@@ -319,8 +319,9 @@ tag in the `pom.xml` file like the following:
 
 ## Troubleshooting
 ### Missing RHSSO admin password
-When we install the RHSSO instance several times using the same DB, the default `admin` password available from the 
-`credential-rhsso` Secret does not reflect the real value, because in that case the DB update would fail.
+When we install the RHSSO instance several times using the same DB, a new password is generated for the `admin` user,
+available from the `credential-rhsso` Secret, but this would not match the value already stored in the DB, causing the 
+login to fail because of the wrong password.
 
 Follow these instructions to create a new admin user that allows you to login and reset the password of the `admin`
 user in the `master` Realm: 
