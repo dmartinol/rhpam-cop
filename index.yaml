@@ -3,12 +3,22 @@ entries:
   rhpam-cop:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2022-05-23T17:54:42.405548+02:00"
+    created: "2022-05-24T07:27:06.028839086Z"
+    description: A Helm chart to deploy authoring or production environment on Openshift
+    digest: b65e8d41289d54096093756a325a89a5b21ff939585964a0209e64bc431a9595
+    name: rhpam-cop
+    type: application
+    urls:
+    - https://dmartinol.github.io/rhpam-cop/rhpam-cop-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2022-05-24T07:27:06.014409993Z"
     description: A Helm chart to deploy authoring or production environment on Openshift
     digest: 72af798b0c2e304f0b3812dbb9f929c4db2d787f89d3782495ee76ad495ca6d7
     name: rhpam-cop
     type: application
     urls:
-    - rhpam-cop-0.1.0.tgz
+    - https://dmartinol.github.io/rhpam-cop/rhpam-cop-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-23T17:54:42.392342+02:00"
+generated: "2022-05-24T07:27:06.002693999Z"
