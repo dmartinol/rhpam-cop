@@ -332,7 +332,7 @@ user in the `master` Realm:
 /opt/eap/bin/jboss-cli.sh --connect --command=reload
 ```
 
-After resetting the `admin` password, you can delete the` test` user from the RHSSO console.
+After resetting the `admin` password, you can delete the `test` user from the RHSSO console.
 
 ## License
 See the associated [LICENSE](./LICENSE) file
