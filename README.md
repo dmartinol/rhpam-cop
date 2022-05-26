@@ -62,7 +62,7 @@ References:
 
 ## Installing the chart
 To install the chart in the `my-namespace` namespace with the release name `my-rhpam` and using custom configuration in `my-rhpam.yaml`:
-**TODO chart repo**
+
 ```shell
 helm repo add redhat-cop https://dmartinol.github.io/rhpam-cop/
 helm install -n my-namespace -f my-rhpam.yaml my-rhpam redhat-cop/rhpam-cop
