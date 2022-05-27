@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  rhpam:
+  - apiVersion: v2
+    appVersion: 7.9.1
+    created: "2022-05-27T12:12:42.316862478Z"
+    description: A Helm chart to install RHPAM on Openshift using the RHPAM operator
+    digest: bc142407d3ba137b608cd494aeb006eae6903b79707ebbd48a0ae10084d24a58
+    name: rhpam
+    type: application
+    urls:
+    - https://github.com/dmartinol/rhpam-cop/releases/download/rhpam-0.1.1/rhpam-0.1.1.tgz
+    version: 0.1.1
   rhpam-cop:
   - apiVersion: v2
     appVersion: 0.1.0
@@ -11,4 +22,4 @@ entries:
     urls:
     - https://dmartinol.github.io/rhpam-cop/rhpam-cop-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-24T10:36:32.19512867Z"
+generated: "2022-05-27T12:12:42.316867578Z"
