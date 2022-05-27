@@ -271,6 +271,7 @@ Those under the `customProps` key will be added to the `rhpam-custom-configmap` 
     port: 3306
     username: USER
 ```
+
 ## Configuration and installation details
 ### Configuring the git repository (`authoring` environment only)
 Assuming that an external Git server is available (e.g., Bitbucket or GitHub), the following steps are required 
